@@ -1,0 +1,160 @@
+.login-page-W {
+  background-color: #32b7ef;
+  overflow: auto;
+}
+
+  .login-page-W:before {
+    background-image: url(../../assets/Intro_bg.png);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    z-index: 0;
+  }
+
+.loginForm-w {
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.5);
+  padding: 100px;
+  max-width: 1200px;
+}
+
+.logo-w  {
+  max-width: 200px;
+  margin: calc(13vh - 63px) 0 8vh;
+  display: inline-block;
+}
+
+.login-page-W > h2 {
+  margin-top: calc(5vh - 40px);
+}
+
+.login-page-W > h3 {
+  margin-top: calc(4vh - 40px);
+}
+
+.login-page-W > p {
+  margin-top: calc(10vh - 40px);
+}
+
+.loginForm-w {
+  margin-top: calc(38vh - 280px);
+}
+
+.login-page-W > footer {
+  margin-top: calc(7vh - 20px);
+}
+
+.logo-w img {
+  width: 100%
+}
+
+.loginForm-w .input-style {
+  max-width: 100%;
+  width: calc(50% - 40px);
+  display: inline-block;
+}
+
+  .loginForm-w .input-style:first-child {
+    margin: 0 80px 0 0;
+  }
+
+  .loginForm-w .input-style > fa-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    color: #878181;
+    transform: translate(0,-50%);
+  }
+
+.loginForm-w button {
+  border: 2px solid #2b2b2b;
+}
+
+.input-style > span {
+  padding-left: 25px;
+}
+
+.forgot-p-w {
+  font-size: 12px;
+}
+
+.input-style > input {
+  padding-left: 27px;
+  font-size: 12px;
+}
+
+
+@media screen and (max-width: 991px) {
+
+  .loginForm-w {
+    padding: 65px 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .loginForm-w {
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.5);
+    padding: 45px 40px;
+    width: 100% !important;
+    max-width: 1200px;
+  }
+
+    .loginForm-w .input-style {
+      max-width: 100%;
+      width: 100%;
+      display: block !important;
+      margin-bottom: 30px !important;
+    }
+
+    .loginForm-w button {
+      min-width: 110px;
+    }
+}
+
+
+@media screen and (max-height: 700px) {
+
+
+  .logo-w {
+    max-width: 140px;
+    margin: 20px 0 20px 0;
+    display: inline-block;
+  }
+
+  .login-page-W > h2 {
+    margin-top: 15px;
+  }
+
+  .login-page-W > h3 {
+    margin-top: 0;
+  }
+
+  .login-page-W > p {
+    margin-top: 20px;
+  }
+
+  .loginForm-w {
+    margin-top: 10px;
+  }
+}
+
+.errorMgs {
+  font-size: 14px;
+  color: #ff0000;
+  display: inline-block;
+  padding: 6px 25px;
+  border: 2px dotted #f00;
+  margin-top: 8px;
+  border-radius: 50px;
+}
+
+  .errorMgs:empty {
+    display: none;
+  }

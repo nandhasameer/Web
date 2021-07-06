@@ -1,0 +1,202 @@
+<!--original-->
+<!--<app-header></app-header>
+<div class="container mt-5">
+  <h2 class="heading position-relative">
+    <span class="bg-white pt-2 pb-4 pr-3 d-inline-block position-relative z-index-1">  Add News & Events </span>
+  </h2>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-12 col-sm-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-5  col-form-label">Event Date</label>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-7 col-xl-7 input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="EventDate" name="EventDate" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <i class="fas fa-calendar-alt btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-12 col-sm-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label ">Event HeadLine</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+            <input type="text" class="form-control" placeholder="Event HeadLine" [(ngModel)]="EventHeadLine" name="EventHeadLine">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">Event Short Description</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+
+            <textarea type="number" class="form-control" placeholder="Event Short Description" [(ngModel)]="EventShortDescription" name="EventShortDescription"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">IsActive</label>
+          <div class="col-12 col-sm-6  col-lg-7 col-xl-7 py-2">
+            <input type="checkbox" checked="checked" class="form-control available" [(ngModel)]="IsSelect" name="IsSelect">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">Event Description</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+            <textarea type="text" class="form-control" placeholder="Event Description" [(ngModel)]="EventDescription" name="EventDescription"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-row mt-4">
+      <div class="col-12 text-center">
+        <button class="text-uppercase btn btn-success mx-2" (click)="SaveNewsEventsDetails()">save</button>
+        <button class="text-uppercase btn btn-danger mx-2" (click)="Clear()">Clear</button>
+
+      </div>
+      <label style="margin-left:auto;margin-right:auto;   font-size: 25px; color: #006400;">{{SuccessMessage}}</label>
+    </div>
+  </form>
+</div>
+<div class="fixed-bottom">
+  <app-footer></app-footer>
+</div>-->
+<!--modified ❌-->
+
+<app-header></app-header>
+
+<div *ngIf="SuccessMessage" class="alert alert-success" dismissOnTimeout="3000" role="alert">
+  {{SuccessMessage}}
+</div>
+<div *ngIf="errorMgs" class="alert alert-danger" dismissOnTimeout="3000" role="alert">
+  {{errorMgs}}
+</div>
+<!--<div class="alert alert-danger"  dismissOnTimeout="3000"     role="alert">
+  This is a danger alert—check it out!
+</div>-->
+
+
+<div class="container mt-5" *ngIf="IsEnableGameInfo">
+  <button type="button" class="btn btn-secondary mb-2" (click)="BackToAdmin()"><i class="fas fa-arrow-left"></i>Back</button>
+  <h2 class="heading position-relative">
+    <span class="bg-white pt-2 pb-4 pr-3 d-inline-block position-relative z-index-1 color-primary">  Add News & Events </span>
+  </h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="SaveNewsEventsDetails()">
+    <div class="form-row">
+
+      <div class="form-group col-12 col-sm-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-5  col-form-label">Event Date</label>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-7 col-xl-7 input-group">
+            <input class="form-control" formControlName="EventDate" [ngClass]="{ 'is-invalid': submitted && f.EventDate.errors }" placeholder="yyyy-mm-dd" [(ngModel)]="EventDate" name="EventDate" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <i class="fas fa-calendar-alt btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></i>
+            </div>
+            <div *ngIf="submitted && f.EventDate.errors" class="invalid-feedback">
+              <div *ngIf="f.EventDate.errors.required">Event Date is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-12 col-sm-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label ">Event HeadLine</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+            <input type="text" formControlName="EventHeadLine" [ngClass]="{ 'is-invalid': submitted && f.EventHeadLine.errors }" class="form-control" placeholder="Event HeadLine" [(ngModel)]="EventHeadLine" name="EventHeadLine">
+          </div>
+          <div *ngIf="submitted && f.EventHeadLine.errors" class="invalid-feedback">
+            <div *ngIf="f.EventHeadLine.errors.required">Event HeadLine is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">Event Short Description</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+            <textarea type="number" class="form-control" formControlName="EventShortDescription" [ngClass]="{ 'is-invalid': submitted && f.EventShortDescription.errors }" placeholder="Event Short Description" [(ngModel)]="EventShortDescription" name="EventShortDescription"></textarea>
+          </div>
+          <div *ngIf="submitted && f.EventShortDescription.errors" class="invalid-feedback">
+            <div *ngIf="f.EventShortDescription.errors.required">Event ShortDescription is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">IsActive</label>
+          <div class="col-12 col-sm-6  col-lg-7 col-xl-7 py-2">
+            <input style="cursor:pointer" type="checkbox" formControlName="IsSelect" [ngClass]="{ 'is-invalid': submitted && f.IsSelect.errors }" checked="checked" class="form-control available" [(ngModel)]="IsSelect" name="IsSelect">
+          </div>
+          <div *ngIf="submitted && f.IsSelect.errors" class="invalid-feedback">
+            <div *ngIf="f.IsSelect.errors.required">Please Verify Event is Active or Not</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-12 col-lg-6 col-xl-6 px-4">
+        <div class="d-sm-flex d-lg-flex d-xl-flex">
+          <label class="col-12 col-sm-6 col-lg-5 col-xl-5 col-form-label">Event Description</label>
+          <div class="col-12 col-sm-6 col-lg-7 col-xl-7">
+            <textarea type="text" class="form-control" formControlName="EventDescription" [ngClass]="{ 'is-invalid': submitted && f.EventDescription.errors }" placeholder="Event Description" [(ngModel)]="EventDescription" name="EventDescription"></textarea>
+          </div>
+          <div *ngIf="submitted && f.EventDescription.errors" class="invalid-feedback">
+            <div *ngIf="f.EventDescription.errors.required">Event Description is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row mt-4">
+      <div class="col-12 text-center">
+        <!--<button class="text-uppercase btn btn-success mx-2" [disabled]="!isSave">Save</button>-->
+        <button class="text-uppercase btn btn-success mx-2"><!--<i class="fas fa-spinner fa-pulse ml-2" *ngIf="isSave" style="font-size: 20px; "></i>-->Save</button>
+        <button class="text-uppercase btn btn-danger mx-2" (click)="Clear()">Clear</button>
+      </div>
+      <!--<label style="margin-left:auto;margin-right:auto;   font-size: 25px; color: #006400;">{{SuccessMessage}}</label>-->
+    </div>
+
+  </form>
+
+</div>
+
+<div class="fixed-bottom">
+  <app-footer></app-footer>
+</div>
+<div *ngIf="!IsEnableGameInfo" class="container">
+  <br />
+  <button type="button" class="btn btn-primary mb-2" routerLink="/admin"><i class="fas fa-arrow-left"></i>Back</button>
+  <br />
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card">
+        <div class="card-image">
+          <img src="../../assets/403.png" style="height: 400px; width: 400px; position: absolute;left: 50%; top: 50%;">
+          <span class="card-image" style="color:#039be5 ">403 - ACCESS DENIED</span><br />
+          <p style="color:#ff0000;position: absolute;left: 50%; top: 50%; ">You don't have the permission to access this resource.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

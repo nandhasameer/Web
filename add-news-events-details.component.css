@@ -1,0 +1,17 @@
+.available {
+  width: 20px;
+  height: 25px;
+}
+
+label::after {
+  content: ":";
+  position: absolute;
+  right: 0px;
+}
+
+@media (max-width: 575.98px) {
+  label::after {
+    content: "";
+    position: absolute;
+  }
+}

@@ -1,0 +1,59 @@
+
+  <section class="login-page-W vh-100 text-center container-fluid">
+    <!-- logo -->
+    <div  class="logo-w position-relative z-index-1"><app-logo></app-logo></div>
+    <!-- logo end-->
+
+    <h2 class="text-white position-relative z-index-1">Welcome to YSECIT Client Portal.</h2>
+    <!--<h3 class="text-white position-relative z-index-1">B2B Client Portal</h3>-->
+    <p class="text-white position-relative z-index-1">
+      Here You can find information on the upcoming titles, new game realeases,<br>
+      latest news and access to all our marketing materials
+    </p>
+    <!-- login fron -->
+    <div class="loginForm-w bg-white rounded w-75 jumbotron position-relative z-index-1" >
+      <form >
+        <div class="input-style d-inline-block " style="z-index: 1;">
+          <input type="text" name="userId" [(ngModel)]="userId" required>
+          <span>Username Or Email Addres  </span>
+          <fa-icon [icon]="faUser"></fa-icon>
+        </div>
+        <div class="input-style  d-inline-block" style="z-index: 1;">
+          <input [type]="show ? 'text' : 'password'" name="password" [(ngModel)]="password" required>
+          <span>Password</span>
+          <fa-icon [icon]="faUserLock"></fa-icon>
+        </div>
+        <span><i class="fas fa-eye float-right" (click)="ShowPassword()"></i></span>
+
+
+
+        <!--<label class="errorMgs">{{errorMgs}}</label>-->
+        <div class="forgot-p-w w-100 d-inline-block mt-2">
+          <label class="float-left checkbox-style">
+            Remember Me
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+
+          <span class="float-right">Forgot your password</span>
+        </div>
+
+
+        <button class="btn bg-dark text-white w-25" (click)="submitButton()"><i class="fas fa-spinner fa-pulse ml-2" *ngIf="isLogin" style="font-size: 20px; "></i> Login</button>
+
+      </form><br/>
+      <div *ngIf="errorMgs" class="alert alert-danger" dismissOnTimeout="3000" role="alert">
+        {{errorMgs}}
+      </div>
+    </div>
+  
+
+
+    <!-- footer -->
+    <footer class="text-white position-relative z-index-1">
+      <app-social-media></app-social-media>
+    </footer>
+  </section>
+
+
+
